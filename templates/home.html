@@ -1,78 +1,40 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <title>Image Classification</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-   <body>
-      <title>Churn Prediction</title>
-	  <div class="container">
-		<div class="row">
+<body>
 
-		  <form action="http://localhost:5000/" method="POST">
-		  	<div class="col-sm-9">
-			 <div class="form-group  purple-border">
-				  <label for="comment">Credit Score:</label>
-				  <textarea class="form-control" rows="2" id="query1" name="query1" rows="2" cols="5" autofocus>{{query1}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">Gender:</label>
-				  <textarea class="form-control" rows="2" id="query2" name="query2" rows="2" cols="5" autofocus>{{query2}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">Age:</label>
-				  <textarea class="form-control" rows="2" id="query3" name="query3" rows="2" cols="5" autofocus>{{query3}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">Tenure:</label>
-				  <textarea class="form-control" rows="2" id="query4" name="query4" rows="2" cols="5" autofocus>{{query4}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">Balance:</label>
-				  <textarea class="form-control" rows="2" id="query5" name="query5" rows="2" cols="5" autofocus>{{query5}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">Products Number:</label>
-				  <textarea class="form-control" rows="2" id="query6" name="query6" rows="2" cols="5" autofocus>{{query6}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">Credit Card:</label>
-				  <textarea class="form-control" rows="2" id="query7" name="query7" rows="2" cols="5" autofocus>{{query7}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">Active Member:</label>
-				  <textarea class="form-control" rows="2" id="query8" name="query8" rows="2" cols="5" autofocus>{{query8}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">Estimated Salary:</label>
-				  <textarea class="form-control" rows="2" id="query9" name="query9" rows="2" cols="5" autofocus>{{query9}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">country_France:</label>
-				  <textarea class="form-control" rows="2" id="query10" name="query10" rows="2" cols="5" autofocus>{{query10}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">country_Germany:</label>
-				  <textarea class="form-control" rows="2" id="query11" name="query11" rows="2" cols="5" autofocus>{{query11}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">country_Spain:</label>
-				  <textarea class="form-control" rows="2" id="query12" name="query12" rows="2" cols="5" autofocus>{{query12}}</textarea>
-			</div>
-			</div>
-			<div class="col-sm-3">
-			    <button type="submit" class="btn btn-primary" name="submit">SUBMIT</button>
-			</div>
-		  </form>
-		  </div>
-		  
-		<div class="row"> 
-			<div class="col-sm-9">
-			<textarea class="form-control" rows="2" id="comment" name="query6" rows="2" cols="5" autofocus>{{output1}}</textarea>
-			<textarea class="form-control" rows="2" id="comment" name="query7" rows="2" cols="5" autofocus>{{output2}}</textarea>
-			</div>
-		</div>
-	</div>		
-   </body>
+<div class="container">
+  <h1 class="jumbotron bg-primary">Image Classfication</h1>
+  <br><br>
+  <form class="form-horizontal" action="/submit" method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Upload Your Image :</label>
+      <div class="col-sm-10">          
+        <input type="file" class="form-control" placeholder="Hours Studied"  name="my_image" id="pwd">
+      </div>
+    </div>
+
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </form>
+
+	{% if prediction %}
+  <img src="{{img_path}}" height="400px" width="400px">
+	<h2> Your Prediction   : <i> {{prediction}} </i></h2>
+  <h2> Your Prediction   : <i> {{pred}} </i></h2>
+	{% endif %}
+
+</div>
+</body>
 </html>
